@@ -42,16 +42,6 @@
             <version>0.8.13.RELEASE</version>
         </dependency>
 
-        <!-- Flyway para migraciones (usa JDBC) -->
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-        </dependency>
-
         <!-- Validación -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -65,7 +55,7 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Hot reload (opcional, para desarrollo) -->
+        <!-- Hot reload (opcional, para desarrollo local) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
