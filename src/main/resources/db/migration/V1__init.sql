@@ -1,0 +1,21 @@
+CREATE TABLE client (
+  id BIGSERIAL PRIMARY KEY,
+  name VARCHAR(200) NOT NULL,
+  document VARCHAR(50) UNIQUE
+);
+
+CREATE TABLE account (
+  id BIGSERIAL PRIMARY KEY,
+  client_id BIGINT NOT NULL REFERENCES client(id),
+  number VARCHAR(50) NOT NULL UNIQUE,
+  balance NUMERIC(20,2) NOT NULL DEFAULT 0
+);
+
+CREATE TABLE transfer (
+  id BIGSERIAL PRIMARY KEY,
+  from_account BIGINT,
+  to_account BIGINT,
+  amount NUMERIC(20,2) NOT NULL,
+  status VARCHAR(20) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

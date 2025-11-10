@@ -1,0 +1,28 @@
+spring:
+  r2dbc:
+    url: ${R2DBC_DATABASE_URL:r2dbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:transferdb}}
+    username: ${DB_USER:appuser}
+    password: ${DB_PASS:appsecret}
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:transferdb}}
+    username: ${DB_USER:appuser}
+    password: ${DB_PASS:appsecret}
+
+  flyway:
+    enabled: ${SPRING_FLYWAY_ENABLED:true}
+    baseline-on-migrate: true
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:transferdb}}
+    user: ${DB_USER:appuser}
+    password: ${DB_PASS:appsecret}
+    locations: classpath:db/migration
+
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    org.springframework.r2dbc: INFO
+    org.springframework.data.r2dbc: INFO
+    org.springframework.boot.autoconfigure.flyway: INFO
