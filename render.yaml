@@ -1,10 +1,8 @@
 services:
   - type: web
     name: transferbanc
-    env: java
+    runtime: docker
     plan: free
-    buildCommand: ./mvnw clean package -DskipTests
-    startCommand: java -jar target/transferbanc-0.0.1-SNAPSHOT.jar
     envVars:
       - key: DB_USER
         value: appuser
@@ -20,14 +18,11 @@ services:
         fromDatabase:
           name: transferdb
           property: port
-      - key: JDBC_DATABASE_URL
+      - key: DATABASE_URL
         fromDatabase:
           name: transferdb
           property: connectionString
-      - key: R2DBC_DATABASE_URL
-        value: r2dbc:postgresql://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}
-      - key: SPRING_FLYWAY_ENABLED
-        value: "true"
+    dockerfilePath: ./Dockerfile
 
 databases:
   - name: transferdb
