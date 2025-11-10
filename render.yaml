@@ -1,8 +1,9 @@
 services:
   - type: web
     name: transferbanc
-    runtime: docker
+    env: docker
     plan: free
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: DB_USER
         value: appuser
@@ -22,7 +23,7 @@ services:
         fromDatabase:
           name: transferdb
           property: connectionString
-    dockerfilePath: ./Dockerfile
 
 databases:
   - name: transferdb
+    plan: free
